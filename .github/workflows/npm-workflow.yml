@@ -6,8 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       package-name:
+        type: choice
         description: "Name of the package to install"
         required: true
+        options:
+          - axios
+          - lodash
+          - dayjs
       package-version:
         description: "Version of the package to install"
         required: false
