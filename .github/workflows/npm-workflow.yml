@@ -1,0 +1,33 @@
+# Name of the workflow
+name: Node.js CI
+
+# Specifies the events that trigger the workflow. In this case, it triggers on a push to the main branch and on pull requests targeting the main branch.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Defines the job(s) that will be executed.
+jobs:
+  build:
+    # Specifies the type of runner (virtual machine) to use. In this example, it uses the latest Ubuntu environment.
+    runs-on: ubuntu-latest
+
+    # Contains the sequence of steps to execute.
+    steps:
+      # This action checks out your repository so the workflow can access the code.
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Sets up Node.js, if needed (this step can be removed if not necessary).
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20" # Specify the Node.js version
+
+      #  Installs the dependencies listed in package.json
+      - name: Install dependencies
+        run: npm install
