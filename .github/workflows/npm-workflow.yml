@@ -13,6 +13,7 @@ on:
           - axios
           - lodash
           - dayjs
+          - "@skyline-/core"
       package-version:
         description: "Version of the package to install"
         required: false
