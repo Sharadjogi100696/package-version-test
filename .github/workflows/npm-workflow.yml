@@ -37,6 +37,8 @@ jobs:
 
       - name: Configure Git
         run: |
+          git config --global user.name "Sharadjogi100696"
+          git config --global user.email "sharad.jogi100696@gmail.com"
           git remote set-url origin https://sharadjogi100696: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@github.com/USERNAME/REPO_NAME.git
 
       - name: Commit changes
