@@ -3,12 +3,14 @@ name: Node.js CI
 
 # Specifies the events that trigger the workflow. In this case, it triggers on a push to the main branch and on pull requests targeting the main branch.
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      package-name:
+        description: "Name of the package to install"
+        required: true
+      package-version:
+        description: "Version of the package to install"
+        required: false
 
 # Defines the job(s) that will be executed.
 jobs:
@@ -32,8 +34,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: lodash
-        run: npm install lodash@4.17.21
+      - name: Install the package
+        run: npm install ${{ inputs['package-name'] }}@${{ inputs['package-version'] }} --save
 
       - name: Configure Git
         run: |
