@@ -45,4 +45,4 @@ jobs:
       - name: Commit changes
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: git push https://$PAT_TOKEN@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+        run: $PAT_TOKEN
