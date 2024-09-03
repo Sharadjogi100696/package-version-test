@@ -39,10 +39,10 @@ jobs:
         run: |
           git config --global user.name "Sharadjogi100696"
           git config --global user.email "sharad.jogi100696@gmail.com"
-          git remote set-url origin https://sharadjogi100696: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github.com/Sharadjogi100696/package-version-test.git
-
-      - name: Commit changes
-        run: |
           git add .
           git commit -m "Automated commit: update generated files"
-          git push
+
+      - name: Commit changes
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: git push https://$PAT_TOKEN@github.com/${{ github.repository }} HEAD:${{ github.ref }}
