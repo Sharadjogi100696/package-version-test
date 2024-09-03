@@ -31,3 +31,17 @@ jobs:
       #  Installs the dependencies listed in package.json
       - name: Install dependencies
         run: npm install
+
+      - name: lodash
+        run: npm install lodash@4.17.21
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Sharadjogi100696"
+          git config --global user.email "sharad.jogi100696@gmail.com"
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Automated commit: update generated files"
+          git push
