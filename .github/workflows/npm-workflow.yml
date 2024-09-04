@@ -5,7 +5,7 @@ name: Node.js CI
 on:
   workflow_dispatch:
     inputs:
-      package-name:
+      package1:
         type: choice
         description: "Name of the package to install"
         required: true
@@ -14,7 +14,46 @@ on:
           - lodash
           - dayjs
           - "@skyline-/core"
-      package-version:
+      version1:
+        description: "Version of the package to install"
+        required: false
+
+      package2:
+        type: choice
+        description: "Name of the package to install"
+        required: true
+        options:
+          - axios
+          - lodash
+          - dayjs
+          - "@skyline-/core"
+      version2:
+        description: "Version of the package to install"
+        required: false
+
+      package3:
+        type: choice
+        description: "Name of the package to install"
+        required: true
+        options:
+          - axios
+          - lodash
+          - dayjs
+          - "@skyline-/core"
+      version3:
+        description: "Version of the package to install"
+        required: false
+
+      package4:
+        type: choice
+        description: "Name of the package to install"
+        required: true
+        options:
+          - axios
+          - lodash
+          - dayjs
+          - "@skyline-/core"
+      version4:
         description: "Version of the package to install"
         required: false
 
@@ -40,8 +79,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install the package
-        run: npm install ${{ inputs['package-name'] }}@${{ inputs['package-version'] }} --save
+      - name: Install first package
+        run: npm install ${{ inputs['package1'] }}@${{ inputs['version1'] }} --save
+
+      - name: Install second package
+        if: ${{ inputs['package2'] != '' && inputs['version2'] != '' }}
+        run: npm install ${{ inputs['package2'] }}@${{ inputs['version2'] }} --save
+
+      - name: Install third package
+        if: ${{ inputs['package3'] != '' && inputs['version3'] != '' }}
+        run: npm install ${{ inputs['package3'] }}@${{ inputs['version3'] }} --save
+
+      - name: Install fourth package
+        if: ${{ inputs['package4'] != '' && inputs['version4'] != '' }}
+        run: npm install ${{ inputs['package4'] }}@${{ inputs['version4'] }} --save
 
       - name: Configure Git
         run: |
