@@ -16,12 +16,11 @@ on:
           - "@skyline-/core"
       version1:
         description: "Version of the package to install"
-        required: false
+        required: true
 
       package2:
         type: choice
         description: "Name of the package to install"
-        required: true
         options:
           - axios
           - lodash
@@ -45,7 +44,6 @@ on:
       package4:
         type: choice
         description: "Name of the package to install"
-        required: true
         options:
           - axios
           - lodash
