@@ -29,12 +29,11 @@ on:
           - "@skyline-/core"
       version2:
         description: "Version of the package to install"
-        required: false
 
       package3:
         type: choice
         description: "Name of the package to install"
-        required: true
+
         options:
           - axios
           - lodash
@@ -42,7 +41,6 @@ on:
           - "@skyline-/core"
       version3:
         description: "Version of the package to install"
-        required: false
 
       package4:
         type: choice
@@ -55,7 +53,6 @@ on:
           - "@skyline-/core"
       version4:
         description: "Version of the package to install"
-        required: false
 
 # Defines the job(s) that will be executed.
 jobs:
