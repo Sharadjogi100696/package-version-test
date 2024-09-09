@@ -99,7 +99,11 @@ jobs:
           git commit -m "Automated commit: update generated files"
           git checkout -b ${{ env.BRANCH_NAME }}
 
-      - name: Commit changes
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: git push https://$PAT_TOKEN@github.com/${{ github.repository }} HEAD:${{ github.ref }} --set-upstream origin ${{ env.BRANCH_NAME }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          base: main # The branch you want to merge into
+          title: "commit message"
+          body: "This PR is triggered by unknown"
