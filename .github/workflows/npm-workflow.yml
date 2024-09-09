@@ -107,6 +107,6 @@ jobs:
 
       - name: Create Pull Request via GitHub API
         run: |
-          gh pr create --base main --head ${{ env.BRANCH_NAME }} --title "Add new feature" --body "This PR adds a new feature"
+          gh pr create --base main --head ${{ env.BRANCH_NAME }} --title "Add new feature" --body "This PR is raised by ${{ github.actor }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use built-in GitHub token
