@@ -58,7 +58,7 @@ jobs:
     # Specifies the type of runner (virtual machine) to use. In this example, it uses the latest Ubuntu environment.
     runs-on: ubuntu-latest
     env:
-      BRANCH_NAME: "${{ inputs['package1'] }}-update"
+      BRANCH_NAME: "${{ inputs['package1'] }}@${{ inputs[version1] }}-update"
 
     # Contains the sequence of steps to execute.
     steps:
