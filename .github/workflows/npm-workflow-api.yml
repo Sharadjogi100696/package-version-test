@@ -1,5 +1,5 @@
 # Name of the workflow
-name: Node.js CI
+name: RestAPI
 
 on:
   workflow_dispatch:
