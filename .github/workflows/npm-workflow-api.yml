@@ -1,0 +1,49 @@
+# Name of the workflow
+name: Node.js CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      package-name:
+        description: "Name of the package to install"
+        required: true
+      version:
+        description: "Version of the package to install"
+        required: true
+
+jobs:
+  build:
+    # Specifies the type of runner (virtual machine) to use. In this example, it uses the latest Ubuntu environment.
+    runs-on: ubuntu-latest
+
+    # Contains the sequence of steps to execute.
+    steps:
+      # This action checks out your repository so the workflow can access the code.
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Sets up Node.js, if needed (this step can be removed if not necessary).
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20" # Specify the Node.js version
+
+      #  Installs the dependencies listed in package.json
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install first package
+        run: npm install ${{ inputs['package-name'] }}@${{ inputs['version'] }} --save
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Automated commit: update generated files"
+
+      - name: Push new branch
+        run: |
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
