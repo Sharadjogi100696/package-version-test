@@ -21,6 +21,8 @@ jobs:
       # This action checks out your repository so the workflow can access the code.
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: develop
 
       # Sets up Node.js, if needed (this step can be removed if not necessary).
       - name: Set up Node.js
@@ -44,6 +46,6 @@ jobs:
 
       - name: Push new branch
         run: |
-          git push
+          git push origin develop
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
